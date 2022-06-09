@@ -1,0 +1,17 @@
+{
+  "preview_1": {
+    "WhenSettingEnabled": "Setting_1 Setting_2 Setting_4 Setting_5 Setting_6 Setting_7 Setting_8",
+    "Images": {
+      "Image_1": "https://preview.redd.it/qxpepkq09be61.jpg?width=1920&format=pjpg&auto=webp&s=6eb1dca0782aeba05f79274187747fcd72df7db7",
+      "Image_2": "https://preview.redd.it/0df4nl429be61.jpg?width=1920&format=pjpg&auto=webp&s=255a16ed971288caba66fac7d358e4f1a2bdbae3",
+      "Image_3": "https://preview.redd.it/74qsvxg39be61.jpg?width=1920&format=pjpg&auto=webp&s=acd28acd1427f81798f5694041b6bc068e65a5b0",
+      "Image_4": "https://preview.redd.it/4fmx44k59be61.jpg?width=1920&format=pjpg&auto=webp&s=a7a00995d809844142f221c6a73c2cfe95107395"
+    }
+  },
+  "preview_2": {
+    "WhenSettingEnabled": "Setting_1 Setting_2 Setting_3 Setting_4 Setting_5 Setting_6 Setting_7 Setting_8",
+    "Images": {
+      "Image_1": "https://preview.redd.it/r01wel98jce61.jpg?width=1920&format=pjpg&auto=webp&s=f29f7317e8251834c2f1faa462159ee9e63ed978"
+    }
+  }
+}

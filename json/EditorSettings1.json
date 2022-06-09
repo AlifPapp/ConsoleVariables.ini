@@ -1,0 +1,206 @@
+{
+  "Setting_1": {
+    "Title": "Remove leaves and bushes",
+    "Description": "<b>Warning:</b> Also removes some other world meshes (rocks, metal nodes, crystals, etc.)",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "foliage.UseOcclusionType",
+        "Id": "foliage_UseOcclusionType",
+        "Type": "switch",
+        "Value": "false"
+      }
+    }
+  },
+  "Setting_2": {
+    "Title": "Reduce particles",
+    "Description": "<b>Description:</b> Set max ammount of particles from smoke grenade, flamethrower smoke, etc.<br><b>Warning:</b> Poison wyvern and basilisk poison balls are harder to see.",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "FX.MaxCPUParticlesPerEmitter",
+        "Id": "FX_MaxCPUParticlesPerEmitter",
+        "Type": "stepper",
+        "Value": "1",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      }
+    }
+  },
+  "Setting_3": {
+    "Title": "Remove water surface",
+    "Description": "<b>Warning:</b> Also removes a lot of other things:<br>(Structure placement overlay, parasaur red detections, weapon projectiles, dino projectiles, loot crate beams, etc.)",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "ShowFlag.GameplayDebug",
+        "Id": "ShowFlag_GameplayDebug",
+        "Type": "switch",
+        "Value": "false"
+      }
+    }
+  },
+  "Setting_4": {
+    "Title": "Remove fog on Island completely",
+    "Description": "<b>Warning:</b> Also removes a lot of other things:<br>(Parasaur red detections, weapon projectiles, dino projectiles, loot crate beam, etc.)",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "ShowFlag.Splines",
+        "Id": "ShowFlag_Splines",
+        "Type": "switch",
+        "Value": "false"
+      }
+    }
+  },
+  "Setting_5": {
+    "Title": "Set max fps",
+    "Description": "",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "t.maxfps",
+        "Id": "t_maxfps",
+        "Type": "stepper",
+        "Value": "144",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      }
+    }
+  },
+  "Setting_6": {
+    "Title": "Smooth framerate",
+    "Description": "",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "FrameRateCap",
+        "Id": "FrameRateCap",
+        "Type": "stepper",
+        "Value": "144",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      },
+      "Variable_2": {
+        "Name": "FrameRateMinimum",
+        "Id": "FrameRateMinimum",
+        "Type": "stepper",
+        "Value": "144",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      },
+      "Variable_3": {
+        "Name": "MaxES2PixelShaderAdditiveComplexityCount",
+        "Id": "MaxES2PixelShaderAdditiveComplexityCount",
+        "Type": "stepper",
+        "Value": "45",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      },
+      "Variable_4": {
+        "Name": "MaxPixelShaderAdditiveComplexityCount",
+        "Id": "MaxPixelShaderAdditiveComplexityCount",
+        "Type": "stepper",
+        "Value": "128",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      },
+      "Variable_5": {
+        "Name": "MaxSmoothedFrameRate",
+        "Id": "MaxSmoothedFrameRate",
+        "Type": "stepper",
+        "Value": "144",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      },
+      "Variable_6": {
+        "Name": "MinDesiredFrameRate",
+        "Id": "MinDesiredFrameRate",
+        "Type": "stepper",
+        "Value": "70",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      },
+      "Variable_7": {
+        "Name": "MinSmoothedFrameRate",
+        "Id": "MinSmoothedFrameRate",
+        "Type": "stepper",
+        "Value": "5",
+        "Min": "1",
+        "Max": "999",
+        "DataStep": "1"
+      }
+    }
+  },
+  "Setting_7": {
+    "Title": "Remove various visual effects",
+    "Description": "<b>Description:</b> Removes (plantZ, plantX, beer, clear water, etc.)<br><b>Warning:</b> Also removes Tek railgun, Tek helmet, Snow Owl and Bloodtslaker vision.",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "ShowFlag.Materials",
+        "Id": "ShowFlag_Materials",
+        "Type": "switch",
+        "Value": "false"
+      },
+      "Variable_2": {
+        "Name": "r.CustomDepth",
+        "Id": "r_CustomDepth",
+        "Type": "switch",
+        "Value": "false"
+      }
+    }
+  },
+  "Setting_8": {
+    "Title": "Fix dedicated storage text",
+    "Description": "<b>Warning:</b> Certain fog effects will be added back",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "ShowFlag.Fog",
+        "Id": "ShowFlag_Fog",
+        "Type": "switch",
+        "Value": "true"
+      }
+    }
+  },
+  "Setting_9": {
+    "Title": "Fix black/noisy snow",
+    "Description": "<b>Warning:</b> Lot of lighting and shadow effects will be added back, reducing the overall visibility and performance",
+    "Default": "false",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "ShowFlag.LightComplexity",
+        "Id": "ShowFlag_LightComplexity",
+        "Type": "switch",
+        "Value": "false"
+      },
+      "Variable_2": {
+        "Name": "ShowFlag.ShaderComplexity",
+        "Id": "ShowFlag_ShaderComplexity",
+        "Type": "switch",
+        "Value": "false"
+      },
+      "Variable_3": {
+        "Name": "ShowFlag.LightShafts",
+        "Id": "ShowFlag_LightShafts",
+        "Type": "switch",
+        "Value": "false"
+      },
+      "Variable_4": {
+        "Name": "ShowFlag.Refraction",
+        "Id": "ShowFlag_Refraction",
+        "Type": "switch",
+        "Value": "false"
+      }
+    }
+  }
+}
