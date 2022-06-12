@@ -3,28 +3,31 @@ function ready(a) {
 }
 
 function start() {
-    // Set json
-    fetch("./json/EditorSettings1.json")
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
+    // Get default config
+    var editor_settings = {};
+    $.ajax({
+        url: "./json/EditorSettings1.json",
+        async: false,
+        dataType: 'json',
+        success: function(data) {
             editor_settings = data;
-        })
-    fetch("./json/EditorPreview1.json")
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
+        }
+    });
+    var editor_preview = {};
+    $.ajax({
+        url: "./json/EditorPreview1.json",
+        async: false,
+        dataType: 'json',
+        success: function(data) {
             editor_preview = data;
-        })
+        }
+    });
 
-    // Build editor
-    //$('#preview').append(build_preview(editor_preview, editor_settings));
+    // Build Buttons
     $('#editor').append(build_editor(editor_settings));
     // generate output string
 
-    // setup stepper
+    // Setup stepper
     document.addEventListener("touchstart", function() {}, false);
     stepper_setInputButtonState();
 }
