@@ -117,18 +117,30 @@ function update_consolevariable_ini() {
 
 // Generate preview image
 function generate_preview() {
-    var preview_image_src = document.getElementById("preview_image").src;
     var SettingsEnabled = " ";
     for (var key in editor_settings) {
         if ($("#" + key).val() == "true") {
             SettingsEnabled += key + " ";
         }
     }
-    console.log(SettingsEnabled);
+    // find closest matching key to SettingsEnabled in editor_preview
+    var closest_key = "preview_1";
+    var closest_key_distance = 10000;
+    for (var key in editor_preview) {
+        var distance = LevenshteinDistance(SettingsEnabled, editor_preview[key]["SettingsEnabled"]);
+        if (distance < closest_key_distance) {
+            closest_key = key;
+            closest_key_distance = distance;
+        }
+    }
+    document.getElementById("preview_image").src = editor_preview[closest_key]["Images"]["Image_1"];
+
+    console.log('Generated preview:\nSettings Enabled: "' + SettingsEnabled + '"\nClosest Match: "' + editor_preview[closest_key]["SettingsEnabled"] + '"');
 }
 
 // On Editor Value updates
 function ValueUpdate(type, id, value) {
+    console.log("ValueUpdate:\ntype: " + type + ":\nid: " + id + "\nvalue: " + value);
     if (type == "switch") {
         if (id.startsWith("Setting_")) {
             generate_preview();
@@ -138,8 +150,6 @@ function ValueUpdate(type, id, value) {
     if (type == "stepper") {
         update_consolevariable_ini(type, id, value);
     }
-
-    console.log("ValueUpdate:\ntype: " + type + ":\nid: " + id + "\nvalue: " + value);
 }
 function switch_ValueUpdate(event) {
     event.target.value = event.target.checked;
@@ -257,4 +267,30 @@ function logo(image) {
 }
 function logo_hovered(image) {
     image.src = "images/gear_hovered.png";
+}
+
+// Levenshtein distance
+function LevenshteinDistance(a, b) {
+    var split1 = a.split(" ");
+    var split2 = b.split(" ");
+    // Set longer array to split1
+    if (split1.length < split2.length) {
+        var temp = split1;
+        split1 = split2;
+        split2 = temp;
+    }
+    var distance = 0;
+    for (var i = 0; i < split1.length; i++) {
+        var found = false;
+        for (var j = 0; j < split2.length; j++) {
+            if (split1[i] == split2[j]) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            distance++;
+        }
+    }
+    return distance;
 }
