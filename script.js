@@ -133,9 +133,15 @@ function generate_preview() {
             closest_key_distance = distance;
         }
     }
+    console.log('Generated preview:\nSettings Enabled: "' + SettingsEnabled + '"\nClosest Match: "' + editor_preview[closest_key]["SettingsEnabled"] + '"');
+   
+    // Preview the image
     document.getElementById("preview_image").src = editor_preview[closest_key]["Images"]["Image_1"];
 
-    console.log('Generated preview:\nSettings Enabled: "' + SettingsEnabled + '"\nClosest Match: "' + editor_preview[closest_key]["SettingsEnabled"] + '"');
+    if (editor_preview[closest_key]["Images"]["Image_2"] != SettingsEnabled) {
+        // Warning 1: Preview image is not a perfect match [more info]
+    }
+    // Warning 2: Preview [doesn't] use -2m4 -d3d10
 }
 
 // On Editor Value updates
