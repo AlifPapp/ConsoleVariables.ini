@@ -8,7 +8,7 @@
         "Name": "foliage.UseOcclusionType",
         "Id": "foliage_UseOcclusionType",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       }
     }
   },
@@ -37,7 +37,7 @@
         "Name": "ShowFlag.GameplayDebug",
         "Id": "ShowFlag_GameplayDebug",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       }
     }
   },
@@ -50,7 +50,7 @@
         "Name": "ShowFlag.Splines",
         "Id": "ShowFlag_Splines",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       }
     }
   },
@@ -149,13 +149,13 @@
         "Name": "ShowFlag.Materials",
         "Id": "ShowFlag_Materials",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       },
       "Variable_2": {
         "Name": "r.CustomDepth",
         "Id": "r_CustomDepth",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       }
     }
   },
@@ -175,31 +175,31 @@
   "Setting_9": {
     "Title": "Fix black/noisy snow",
     "Description": "<b>Warning:</b> Lot of lighting and shadow effects will be added back, reducing the overall visibility and performance",
-    "Default": "false",
+    "Default": "true",
     "Console_Variables": {
       "Variable_1": {
         "Name": "ShowFlag.LightComplexity",
         "Id": "ShowFlag_LightComplexity",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       },
       "Variable_2": {
         "Name": "ShowFlag.ShaderComplexity",
         "Id": "ShowFlag_ShaderComplexity",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       },
       "Variable_3": {
         "Name": "ShowFlag.LightShafts",
         "Id": "ShowFlag_LightShafts",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       },
       "Variable_4": {
         "Name": "ShowFlag.Refraction",
         "Id": "ShowFlag_Refraction",
         "Type": "switch",
-        "Value": "false"
+        "Value": "true"
       }
     }
   }
