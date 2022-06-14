@@ -2,17 +2,17 @@
 :root {
     --image-slider-width: 750px;
     --image-slider-height: 422px;
+    --image-slider-border-width: 3px;
 }
 
 .img_slider {
     position: relative;
     margin: auto;
-    width: var(--image-slider-width);
-    height: var(--image-slider-height);
-    border: 5px solid #262626;
-    background: black;
-    border-radius: 10px;
-    box-shadow: 0px 50px 100px #262626;
+    width:  calc(var(--image-slider-width) + var(--image-slider-border-width) * 2);
+    height: calc(var(--image-slider-height) + var(--image-slider-border-width) * 2);
+    background-image: url(./images/PreviewUnavailable.png);
+    border: var(--image-slider-border-width) solid #131417;
+    box-shadow: rgba(0, 0, 0, 1) 0px 5px 10px 0px;
 }
 
 /*Image */
@@ -38,7 +38,7 @@
 /* Dots */
 .img_slider-dots {
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left: 50%;
     margin-left: -50%;
     display: flex;
