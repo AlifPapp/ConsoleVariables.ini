@@ -137,7 +137,7 @@ function generate_preview() {
     console.log('Generated preview:\nSettings Enabled: "' + SettingsEnabled + '"\nClosest Match: "' + editor_preview[closest_key]["SettingsEnabled"] + '"');
 
     // Preview the images
-    set_preview_image(closest_key);
+    set_preview(closest_key);
 
     if (editor_preview[closest_key]["Images"]["Image_2"] != SettingsEnabled) {
         // Warning 1: Preview image is not a perfect match [more info]
@@ -145,7 +145,7 @@ function generate_preview() {
     // Warning 2: Preview [doesn't] use -2m4 -d3d10
 }
 
-function set_preview_image(key) {
+function set_preview(key) {
     // Check if image is already loaded
     if (current_preview == key) {
         return;
@@ -181,6 +181,13 @@ function set_preview_image(key) {
         var html2 = '<div class="img_slider-dot ' + active + '" onclick="SlideImage_dot(event)" value="' + i + '"></div>'
         $(".img_slider-dots").append(html2);
     }
+
+    // Update Values
+    $(".img_slider").attr("value", "1");
+    $(".img_slider").attr("max", i);
+
+    // log to console
+    console.log("Preview set to: " + key);
 }
 
 // On Editor Value updates
@@ -346,6 +353,10 @@ function SlideImage(event) {
     var value = parent.getAttribute("value");
     var max_value = parent.getAttribute("max");
 
+    if (max_value == 1) {
+        return;
+    }
+
     // Determine next image
     var new_value = value;
     var className = event.target.className;
@@ -382,7 +393,7 @@ function SlideImage(event) {
     $('#img_slider-' + value).css('opacity', '0');
 
     // log to console
-    console.log("Image Slider:\nNew image" + new_value);
+    console.log("Image Slider:\nNew image: " + new_value);
 }
 // if clicked on class "img_slider-dot"
 function SlideImage_dot(event) {
@@ -411,7 +422,7 @@ function SlideImage_dot(event) {
     $('#img_slider-' + value).css('opacity', '0');
 
     // log to console
-    console.log("Image Slider:\nNew image" + new_value);
+    console.log("Image Slider:\nNew image: " + new_value);
 }
 
 
