@@ -1,0 +1,8 @@
+<div class="col pt-3 pb-2 text-center">
+                    <a class="text-white">Using -2m4 -d3d10</a>
+                    <label class="switch"><input type="checkbox" class="switch-input" oninput="switch_ValueUpdate(event)"
+                            id="StartupOptions" value="true" checked=""><span class="switch-label" data-on="On"
+                            data-off="Off">
+                        </span><span class="switch-handle"></span>
+                    </label>
+                </div>

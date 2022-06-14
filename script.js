@@ -1,5 +1,6 @@
 var editor_settings = {};
 var editor_preview = {};
+var current_preview = "";
 
 function ready(a) {
     "loading" != document.readyState ? a() : document.addEventListener("DOMContentLoaded", a);
@@ -134,14 +135,52 @@ function generate_preview() {
         }
     }
     console.log('Generated preview:\nSettings Enabled: "' + SettingsEnabled + '"\nClosest Match: "' + editor_preview[closest_key]["SettingsEnabled"] + '"');
-   
-    // Preview the image
-    document.getElementById("preview_image").src = editor_preview[closest_key]["Images"]["Image_1"];
+
+    // Preview the images
+    set_preview_image(closest_key);
 
     if (editor_preview[closest_key]["Images"]["Image_2"] != SettingsEnabled) {
         // Warning 1: Preview image is not a perfect match [more info]
     }
     // Warning 2: Preview [doesn't] use -2m4 -d3d10
+}
+
+function set_preview_image(key) {
+    // Check if image is already loaded
+    if (current_preview == key) {
+        return;
+    }
+    current_preview = key;
+
+    // Remove old preview images
+    $(".slider_img").each(function () {
+        $(this).remove();
+    });
+    $(".img_slider-dot").each(function () {
+        $(this).remove();
+    });
+
+    // Set new preview images
+    var images = editor_preview[key]["Images"];
+    var i = 0;
+    for (var key2 in images) {
+        i++;
+
+        // Set first image as active
+        var active = "";
+        if (i == 1) {
+            active = "active";
+        }
+        
+        // Add image
+        var html = '<div id="img_slider-' + i + '" class="slider_img ' + active + '">';
+        html += '<img class="slider_img2" src="' + images[key2] + '"/></div>';
+        $(".img_slider").prepend(html);
+
+        // Add dot
+        var html2 = '<div class="img_slider-dot ' + active + '" onclick="SlideImage_dot(event)" value="' + i + '"></div>'
+        $(".img_slider-dots").append(html2);
+    }
 }
 
 // On Editor Value updates
@@ -300,3 +339,80 @@ function LevenshteinDistance(a, b) {
     }
     return distance;
 }
+
+// Preview image slider
+function SlideImage(event) {
+    var parent = event.target.parentElement;
+    var value = parent.getAttribute("value");
+    var max_value = parent.getAttribute("max");
+
+    // Determine next image
+    var new_value = value;
+    var className = event.target.className;
+    if (className.includes("left")) {
+        new_value--;
+        if (new_value < 1) {
+            new_value = max_value;
+        }
+    } else if (className.includes("right")) {
+        new_value++;
+        if (new_value > max_value) {
+            new_value = 1;
+        }
+    }
+    // Set new value to parent element
+    parent.setAttribute("value", new_value);
+
+    // Remove class "active" from old dot
+    $('.img_slider-dot').each(function () {
+        this.classList.remove("active");
+    });
+
+    // Add class "active" to new dot
+    $('.img_slider-dot').each(function () {
+        if (this.getAttribute("value") == new_value) {
+            this.classList.add("active");
+        }
+    });
+
+    // Set new image opacity to 1
+    $('#img_slider-' + new_value).css('opacity', '1');
+
+    // Set old image opacity to 0
+    $('#img_slider-' + value).css('opacity', '0');
+
+    // log to console
+    console.log("Image Slider:\nNew image" + new_value);
+}
+// if clicked on class "img_slider-dot"
+function SlideImage_dot(event) {
+    var parent = event.target.parentElement.parentElement;
+    var value = parent.getAttribute("value");
+    var new_value = event.target.getAttribute("value");
+    if (new_value == value) {
+        return;
+    }
+
+    // Set new value to parent element
+    parent.setAttribute("value", new_value);
+
+    // Remove class "active" from old dot
+    $('.img_slider-dot').each(function () {
+        this.classList.remove("active");
+    });
+
+    // Add class "active" to dot
+    event.target.classList.add("active");
+
+    // Set new image opacity to 1
+    $('#img_slider-' + new_value).css('opacity', '1');
+
+    // Set old image opacity to 0
+    $('#img_slider-' + value).css('opacity', '0');
+
+    // log to console
+    console.log("Image Slider:\nNew image" + new_value);
+}
+
+
+
