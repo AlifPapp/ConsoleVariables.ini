@@ -16,11 +16,12 @@
   </p>
 </div>
 
-Work in progress
+Work in progress, nearly done
 
 https://zseni051.github.io/ArkConsoleVariables.ini/
 
 
 ## To Do List:
 - [ ] Fix layout for different dimensions (mobile, big, small)
-- [ ] Finnish the js code.
+- [ ] Finnish the coding the site
+- [ ] Get ss of ini in use
