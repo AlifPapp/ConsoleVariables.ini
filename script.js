@@ -171,7 +171,7 @@ function set_preview(key) {
         if (i == 1) {
             active = "active";
         }
-        
+
         // Add image
         var html = '<div id="img_slider-' + i + '" class="slider_img ' + active + '">';
         html += '<img class="slider_img2" src="' + images[key2] + '"/></div>';
@@ -423,6 +423,22 @@ function SlideImage_dot(event) {
 
     // log to console
     console.log("Image Slider:\nNew image: " + new_value);
+}
+
+// CopyButton
+function copybutton(event) {
+    var id = event.target.id;
+    // set clipboard to editor_settings
+
+    // add class "copied"
+    event.target.classList.add("copied");
+    // remove class "copied" after 2 seconds
+    setTimeout(function () {
+        event.target.classList.remove("copied");
+    }, 2000);
+
+    // log to console
+    console.log("Copied to clipboard: " + id);
 }
 
 
