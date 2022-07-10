@@ -22,6 +22,7 @@ https://zseni051.github.io/ArkConsoleVariables.ini/
 
 
 ## To Do List:
-- [ ] Fix layout for different dimensions (mobile, big, small)
-- [ ] Finnish the coding the site
-- [ ] Get ss of ini in use
+- [ ] Fix layout for different dimensions (mobile, portrait, landscape, etc)
+- [ ] Find optimal EditorSettings configuration
+- [ ] Able to switch beetween different generator settings (presets)
+- [ ] Make script to automated gathering screenshots

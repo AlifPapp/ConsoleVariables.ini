@@ -1,6 +1,9 @@
 var editor_settings = {};
 var editor_preview = {};
+
 var current_preview = "";
+var consolevariable_ini = "";
+
 
 function ready(a) {
     "loading" != document.readyState ? a() : document.addEventListener("DOMContentLoaded", a);
@@ -97,7 +100,7 @@ function build_stepper(id, default_value, min, max, datastep) {
     var html = '<div class="number-input-container ms-auto me-0">';
     html += '<button type="button" class="button-decrement" onclick="stepper_onbutton(event)" data-input-id="' + id + '" data-operation="decrement"></button>';
 
-    html += '<div class="number-input"><input type="number" class="number-input-field" oninput="stepper_oninput()" onblur="stepper_onblur(event)" ';
+    html += '<div class="number-input"><input type="number" class="number-input-field" oninput="stepper_oninput(event)" onblur="stepper_onblur(event)" ';
     html += 'id="' + id + '" value="' + default_value + '" min="' + min + '" max="' + max + '" data-step="' + datastep + '"></div>';
 
     html += '<button type="button" class="button-increment" onclick="stepper_onbutton(event)" data-input-id="' + id + '" data-operation="increment"></button>';
@@ -106,13 +109,11 @@ function build_stepper(id, default_value, min, max, datastep) {
     return html;
 }
 
-// Build consolevariable.ini file
-function build_consolevariable_ini() {
-    return;
-}
-
-// Update consolevariable.ini file
-function update_consolevariable_ini() {
+// Build consolevariable.ini string
+function build_consolevariable_ini() { 
+    // Create consolevariable_ini from html elements
+    consolevariable_ini = "";
+    
     return;
 }
 
@@ -197,20 +198,9 @@ function ValueUpdate(type, id, value) {
         if (id.startsWith("Setting_")) {
             generate_preview();
         }
-        update_consolevariable_ini(type, id, value);
     }
-    if (type == "stepper") {
-        update_consolevariable_ini(type, id, value);
-    }
+    build_consolevariable_ini();
 }
-function switch_ValueUpdate(event) {
-    event.target.value = event.target.checked;
-    ValueUpdate("switch", event.target.id, event.target.checked);
-}
-function stepper_ValueUpdate(event) {
-    ValueUpdate("stepper", event.id, event.value);
-}
-
 
 // On button click
 function button_settings(event) {
@@ -225,10 +215,16 @@ function closepopup(event) {
     }
 }
 
+// Toggle button state
+function switch_ValueUpdate(event) {
+    event.target.value = event.target.checked;
+    ValueUpdate("switch", event.target.id, event.target.value);
+}
+
 // Stepper functions
 function stepper_oninput(event) {
     stepper_setInputButtonState();
-    stepper_ValueUpdate(event.target);
+    ValueUpdate("stepper", event.target.id, event.target.value);
 }
 function stepper_onblur(event) {
     const value = event.target.value;
@@ -238,7 +234,7 @@ function stepper_onblur(event) {
 
     if (event.target.hasAttribute("max") && value > parseFloat(event.target.max))
         event.target.value = event.target.max;
-    stepper_ValueUpdate(event.target);
+    ValueUpdate("stepper", event.target.id, event.target.value);
 }
 function stepper_onbutton(event) {
     let button = event.target;
@@ -265,7 +261,7 @@ function stepper_onbutton(event) {
         if (input.value !== value) {
             stepper_setInputValue(input, value);
             input.value = value;
-            stepper_ValueUpdate(input);
+            ValueUpdate("stepper", button.dataset.inputId, value);
             stepper_setInputButtonState();
         }
     }
@@ -428,10 +424,11 @@ function SlideImage_dot(event) {
 // CopyButton
 function copybutton(event) {
     var id = event.target.id;
-    // set clipboard to editor_settings
+    // set clipboard depending on id
 
     // add class "copied"
     event.target.classList.add("copied");
+
     // remove class "copied" after 2 seconds
     setTimeout(function () {
         event.target.classList.remove("copied");
