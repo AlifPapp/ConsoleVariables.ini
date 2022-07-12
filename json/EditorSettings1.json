@@ -7,8 +7,10 @@
       "Variable_1": {
         "Name": "foliage.UseOcclusionType",
         "Id": "foliage_UseOcclusionType",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       }
     }
   },
@@ -20,7 +22,6 @@
       "Variable_1": {
         "Name": "FX.MaxCPUParticlesPerEmitter",
         "Id": "FX_MaxCPUParticlesPerEmitter",
-        "Type": "stepper",
         "Value": "1",
         "Min": "1",
         "Max": "999",
@@ -36,8 +37,10 @@
       "Variable_1": {
         "Name": "ShowFlag.GameplayDebug",
         "Id": "ShowFlag_GameplayDebug",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       }
     }
   },
@@ -49,14 +52,16 @@
       "Variable_1": {
         "Name": "ShowFlag.Splines",
         "Id": "ShowFlag_Splines",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       }
     }
   },
   "Setting_5": {
-    "Title": "Set max fps",
-    "Description": "",
+    "Title": "Framerate",
+    "Description": "<b>Description:</b> Sets max fps and smooths framerate",
     "Default": "true",
     "Console_Variables": {
       "Variable_1": {
@@ -67,15 +72,8 @@
         "Min": "1",
         "Max": "999",
         "DataStep": "1"
-      }
-    }
-  },
-  "Setting_6": {
-    "Title": "Smooth framerate",
-    "Description": "",
-    "Default": "true",
-    "Console_Variables": {
-      "Variable_1": {
+      },
+      "Variable_2": {
         "Name": "FrameRateCap",
         "Id": "FrameRateCap",
         "Type": "stepper",
@@ -84,7 +82,7 @@
         "Max": "999",
         "DataStep": "1"
       },
-      "Variable_2": {
+      "Variable_3": {
         "Name": "FrameRateMinimum",
         "Id": "FrameRateMinimum",
         "Type": "stepper",
@@ -93,7 +91,7 @@
         "Max": "999",
         "DataStep": "1"
       },
-      "Variable_3": {
+      "Variable_4": {
         "Name": "MaxES2PixelShaderAdditiveComplexityCount",
         "Id": "MaxES2PixelShaderAdditiveComplexityCount",
         "Type": "stepper",
@@ -102,7 +100,7 @@
         "Max": "999",
         "DataStep": "1"
       },
-      "Variable_4": {
+      "Variable_5": {
         "Name": "MaxPixelShaderAdditiveComplexityCount",
         "Id": "MaxPixelShaderAdditiveComplexityCount",
         "Type": "stepper",
@@ -111,7 +109,7 @@
         "Max": "999",
         "DataStep": "1"
       },
-      "Variable_5": {
+      "Variable_6": {
         "Name": "MaxSmoothedFrameRate",
         "Id": "MaxSmoothedFrameRate",
         "Type": "stepper",
@@ -120,7 +118,7 @@
         "Max": "999",
         "DataStep": "1"
       },
-      "Variable_6": {
+      "Variable_7": {
         "Name": "MinDesiredFrameRate",
         "Id": "MinDesiredFrameRate",
         "Type": "stepper",
@@ -129,7 +127,7 @@
         "Max": "999",
         "DataStep": "1"
       },
-      "Variable_7": {
+      "Variable_8": {
         "Name": "MinSmoothedFrameRate",
         "Id": "MinSmoothedFrameRate",
         "Type": "stepper",
@@ -140,7 +138,7 @@
       }
     }
   },
-  "Setting_7": {
+  "Setting_6": {
     "Title": "Remove various visual effects",
     "Description": "<b>Description:</b> Removes (plantZ, plantX, beer, clear water, etc.)<br><b>Warning:</b> Also removes Tek railgun, Tek helmet, Snow Owl and Bloodtslaker vision.",
     "Default": "true",
@@ -148,18 +146,22 @@
       "Variable_1": {
         "Name": "ShowFlag.Materials",
         "Id": "ShowFlag_Materials",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       },
       "Variable_2": {
         "Name": "r.CustomDepth",
         "Id": "r_CustomDepth",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       }
     }
   },
-  "Setting_8": {
+  "Setting_7": {
     "Title": "Fix dedicated storage text",
     "Description": "<b>Warning:</b> Certain fog effects will be added back",
     "Default": "true",
@@ -167,12 +169,14 @@
       "Variable_1": {
         "Name": "ShowFlag.Fog",
         "Id": "ShowFlag_Fog",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       }
     }
   },
-  "Setting_9": {
+  "Setting_8": {
     "Title": "Fix black/noisy snow",
     "Description": "<b>Warning:</b> Lot of lighting and shadow effects will be added back, reducing the overall visibility and performance",
     "Default": "true",
@@ -180,26 +184,34 @@
       "Variable_1": {
         "Name": "ShowFlag.LightComplexity",
         "Id": "ShowFlag_LightComplexity",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       },
       "Variable_2": {
         "Name": "ShowFlag.ShaderComplexity",
         "Id": "ShowFlag_ShaderComplexity",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       },
       "Variable_3": {
         "Name": "ShowFlag.LightShafts",
         "Id": "ShowFlag_LightShafts",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       },
       "Variable_4": {
         "Name": "ShowFlag.Refraction",
         "Id": "ShowFlag_Refraction",
-        "Type": "switch",
-        "Value": "true"
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
       }
     }
   }

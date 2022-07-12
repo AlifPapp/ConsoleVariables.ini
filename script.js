@@ -54,7 +54,7 @@ function build_editor() {
         html += data[key]["Title"];
         html += '</a></td><td class="collapsible-section-header py-1">';
         html += data[key]["Description"];
-        html += '</td><td class="collapsible-section-header">';
+        html += '</td><td class="collapsible-section-header">'; // CONSOLE_VARIABLE switch
         html += build_switch(key, data[key]["Default"]);
         html += "</td></tr>";
 
@@ -64,21 +64,17 @@ function build_editor() {
         html += '<table style="width:100%">';
         for (var key2 in data[key]["Console_Variables"]) {
             html += '<tr><td class="border-end-0" style="font-family: Andale Mono, monospace;">';
-            html += data[key]["Console_Variables"][key2]["Name"]; // Name
-            html += '</td><td class="py-1 border-start-0">';
+            html += data[key]["Console_Variables"][key2]["Name"]; // CONSOLE_VARIABLE Name
+            html += '</td><td class="py-1 border-start-0">'; // CONSOLE_VARIABLE Value
 
             data2 = data[key]["Console_Variables"][key2];
-            if (data2["Type"] == "stepper") {
-                html += build_stepper(
-                    data2["Id"],
-                    data2["Value"],
-                    data2["Min"],
-                    data2["Max"],
-                    data2["DataStep"]
-                );
-            } else if (data2["Type"] == "switch") {
-                html += build_switch(data2["Id"], data2["Value"]);
-            }
+            html += build_stepper(
+                data2["Id"],
+                data2["Value"],
+                data2["Min"],
+                data2["Max"],
+                data2["DataStep"]
+            );
             html += "</td></tr>";
         }
         html += "</table></div></td></tr>";
