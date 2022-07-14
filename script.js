@@ -1,8 +1,7 @@
+var site_url = "https://zseni051.github.io/Ark-ConsoleVariables.ini-Generator/";
+
 var editor_settings = {};
 var editor_preview = {};
-
-var current_preview = "";
-var consolevariable_ini = "";
 
 
 function ready(a) {
@@ -31,9 +30,6 @@ function start() {
     // Build buttons
     $("#editor").append(build_editor());
 
-    // Generate consolevariables.ini file
-    build_consolevariable_ini();
-
     // Generate preview
     generate_preview();
 
@@ -54,7 +50,8 @@ function build_editor() {
         html += data[key]["Title"];
         html += '</a></td><td class="collapsible-section-header py-1">';
         html += data[key]["Description"];
-        html += '</td><td class="collapsible-section-header">'; // CONSOLE_VARIABLE switch
+        html += '</td><td class="collapsible-section-header">';
+        // Build switch
         html += build_switch(key, data[key]["Default"]);
         html += "</td></tr>";
 
@@ -64,9 +61,9 @@ function build_editor() {
         html += '<table style="width:100%">';
         for (var key2 in data[key]["Console_Variables"]) {
             html += '<tr><td class="border-end-0" style="font-family: Andale Mono, monospace;">';
-            html += data[key]["Console_Variables"][key2]["Name"]; // CONSOLE_VARIABLE Name
-            html += '</td><td class="py-1 border-start-0">'; // CONSOLE_VARIABLE Value
-
+            html += data[key]["Console_Variables"][key2]["Name"];
+            html += '</td><td class="py-1 border-start-0">';
+            // Build stepper
             data2 = data[key]["Console_Variables"][key2];
             html += build_stepper(
                 data2["Id"],
@@ -107,9 +104,25 @@ function build_stepper(id, default_value, min, max, datastep) {
 
 // Build consolevariable.ini string
 function build_consolevariable_ini() { 
-    // Create consolevariable_ini from html elements
-    consolevariable_ini = "";
-    
+    // Read EditorSettings1.json and collect values by going through ids
+    var consolevariable_ini = ";Created with:\n;" + site_url + "\n";
+    var data = editor_settings;
+    for (var key in data) {
+        // if setting is enabled
+        if ($("#" + key).val() == "true") {
+            // Add name
+            consolevariable_ini += "\n;[" + data[key]["Title"] + "]\n";
+            // for each console variable
+            for (var key2 in data[key]["Console_Variables"]) {
+                // get value
+                consolevariable_ini += data[key]["Console_Variables"][key2]["Name"] + "=" + $("#" + data[key]["Console_Variables"][key2]["Id"]).val() + "\n";
+            }
+        }
+    }
+    // Add text to codeblock
+    $("#consolevariables_ini").text(consolevariable_ini);
+
+    console.log("Built consolevariable.ini");
     return;
 }
 
@@ -143,6 +156,7 @@ function generate_preview() {
 }
 
 function set_preview(key) {
+    var current_preview = "";
     // Check if image is already loaded
     if (current_preview == key) {
         return;
@@ -195,7 +209,6 @@ function ValueUpdate(type, id, value) {
             generate_preview();
         }
     }
-    build_consolevariable_ini();
 }
 
 // On button click
@@ -204,6 +217,7 @@ function button_settings(event) {
 }
 function button_createfile(event) {
     $("#popup_createfile").addClass("is-visible");
+    build_consolevariable_ini();
 }
 function closepopup(event) {
     if ($(event.target).is(".popup-close") || $(event.target).is(".popup")) {
@@ -211,7 +225,54 @@ function closepopup(event) {
     }
 }
 
-// Toggle button state
+function button_copy_ini(event) {
+    // Change text to Copied! for 2 seconds
+    $(event.target).text("Copied!");
+    setTimeout(function() {
+        $(event.target).text("Copy");
+    }, 2000);
+
+    // Copy to clipboard
+    var text = $("#consolevariables_ini").text();
+    var textarea = document.createElement('textarea');
+    textarea.textContent = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
+
+    // log to console
+    console.log("Copied consolevariable.ini to clipboard");
+}
+function button_download_ini(event) {
+    // Change text to Downloaded! for 2 seconds
+    $(event.target).text("Downloaded!");
+    setTimeout(function() {
+        $(event.target).text("Download");
+    }, 2000);
+
+    // Downloads ini file
+    var text = $("#consolevariables_ini").text();
+    var filename = "ConsoleVariable.ini.txt";
+
+    var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
+    let newLink = document.createElement("a");
+    newLink.download = filename;
+
+    if (window.webkitURL != null) {
+        newLink.href = window.webkitURL.createObjectURL(blob);
+    } else {
+        newLink.href = window.URL.createObjectURL(blob);
+        newLink.style.display = "none";
+        document.body.appendChild(newLink);
+    }
+    newLink.click();
+
+    // log to console
+    console.log("Downloaded consolevariable.ini");
+}
+
+// Toggle button
 function switch_ValueUpdate(event) {
     event.target.value = event.target.checked;
     ValueUpdate("switch", event.target.id, event.target.value);
@@ -415,23 +476,6 @@ function SlideImage_dot(event) {
 
     // log to console
     console.log("Image Slider:\nNew image: " + new_value);
-}
-
-// CopyButton
-function copybutton(event) {
-    var id = event.target.id;
-    // set clipboard depending on id
-
-    // add class "copied"
-    event.target.classList.add("copied");
-
-    // remove class "copied" after 2 seconds
-    setTimeout(function () {
-        event.target.classList.remove("copied");
-    }, 2000);
-
-    // log to console
-    console.log("Copied to clipboard: " + id);
 }
 
 

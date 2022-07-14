@@ -1,7 +1,7 @@
 <div>
   <p align="center">
-    <a href="https://zseni051.github.io/ArkConsoleVariables.ini/">
-    <img src="https://raw.githubusercontent.com/Zseni051/ArkConsoleVariables.ini/master/images/eye_open_close.gif" align="center" alt="AutoSend.png"></a>
+    <a href="https://zseni051.github.io/Ark-ConsoleVariables.ini-Generator/">
+    <img src="https://zseni051.github.io/Ark-ConsoleVariables.ini-Generator/images/eye_open_close.gif" align="center" alt="AutoSend.png"></a>
   </p>
   <p align="center">
     <a href="https://www.youtube.com/channel/UCsIaU94p647veKr7sy12wmA">
@@ -18,11 +18,7 @@
 
 Work in progress, nearly done
 
-https://zseni051.github.io/ArkConsoleVariables.ini/
-
-
 ## To Do List:
 - [ ] Fix layout for different dimensions (mobile, portrait, landscape, etc)
 - [ ] Find optimal EditorSettings configuration
-- [ ] Able to switch beetween different generator settings (presets)
 - [ ] Make script to automated gathering screenshots

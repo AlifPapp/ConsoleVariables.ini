@@ -23,11 +23,12 @@
     transform: translateY(-50%);
     transition: 500ms all;
     position: relative;
+    height: 60%;
     width: 40%;
     margin: 2em auto;
     top: 15%;
     padding: 5rem;
-    background: #fff;
+    background: rgb(225, 225, 225);
     border-radius: 0.25em 0.25em 0.4em 0.4em;
     text-align: center;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
