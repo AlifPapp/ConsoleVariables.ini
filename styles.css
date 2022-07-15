@@ -62,15 +62,14 @@ body {
 }
 
 /* Codeblock */
-pre#consolevariables_ini {
-    background-color: #161B22;
-    color: #F0F6FC;
+#editor_settings {
+    height: 30%;
+}
+#editor_preview {
+    height: 30%;
+}
+#consolevariables_ini {
     height: 80%;
-    width: 95%;
-    margin: 1.5em auto;
-    padding-left: 1em;
-    text-align: left;
-    overflow: auto;
 }
 
 /* FOOTER */

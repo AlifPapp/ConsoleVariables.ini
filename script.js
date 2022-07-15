@@ -3,6 +3,9 @@ var site_url = "https://zseni051.github.io/Ark-ConsoleVariables.ini-Generator/";
 var editor_settings = {};
 var editor_preview = {};
 
+var editor_settings1 = {};
+var editor_preview1 = {};
+
 
 function ready(a) {
     "loading" != document.readyState ? a() : document.addEventListener("DOMContentLoaded", a);
@@ -16,6 +19,7 @@ function start() {
         dataType: "json",
         success: function (data) {
             editor_settings = data;
+            editor_settings1 = data;
         },
     });
     $.ajax({
@@ -24,6 +28,7 @@ function start() {
         dataType: "json",
         success: function (data) {
             editor_preview = data;
+            editor_preview1 = data;
         },
     });
 
@@ -41,7 +46,7 @@ ready(start);
 
 // Build editor
 function build_editor() {
-    var data = editor_settings;
+    var data = editor_settings1;
     var data2;
     var html = '<div class="editor_table"><table><tbody>';
     for (var key in data) {
@@ -104,9 +109,17 @@ function build_stepper(id, default_value, min, max, datastep) {
 
 // Build consolevariable.ini string
 function build_consolevariable_ini() { 
-    // Read EditorSettings1.json and collect values by going through ids
     var consolevariable_ini = ";Created with:\n;" + site_url + "\n";
-    var data = editor_settings;
+
+    // Check editor_settings1
+    if (editor_settings1.constructor !== Object){
+        console.log("Error building consolevariable.ini");
+        $("#consolevariables_ini").text(consolevariable_ini);
+        return;
+    }
+
+    // Read editor_settings1 and collect values by going through ids
+    var data = editor_settings1;
     for (var key in data) {
         // if setting is enabled
         if ($("#" + key).val() == "true") {
@@ -119,17 +132,21 @@ function build_consolevariable_ini() {
             }
         }
     }
-    // Add text to codeblock
-    $("#consolevariables_ini").text(consolevariable_ini);
-
     console.log("Built consolevariable.ini");
+    $("#consolevariables_ini").text(consolevariable_ini);
     return;
 }
 
 // Generate preview image
 function generate_preview() {
+    // Check if editor_preview1 or editor_settings1 is an object
+    if (editor_preview1.constructor !== Object || editor_settings1.constructor !== Object) {
+        set_preview("PreviewUnavailable");
+        return;
+    }
+
     var SettingsEnabled = " ";
-    for (var key in editor_settings) {
+    for (var key in editor_settings1) {
         if ($("#" + key).val() == "true") {
             SettingsEnabled += key + " ";
         }
@@ -137,32 +154,24 @@ function generate_preview() {
     // find closest matching key to SettingsEnabled in editor_preview
     var closest_key = "preview_1";
     var closest_key_distance = 10000;
-    for (var key in editor_preview) {
+    for (var key in editor_preview1) {
         var distance = LevenshteinDistance(SettingsEnabled, editor_preview[key]["SettingsEnabled"]);
         if (distance < closest_key_distance) {
             closest_key = key;
             closest_key_distance = distance;
         }
     }
-    console.log('Generated preview:\nSettings Enabled: "' + SettingsEnabled + '"\nClosest Match: "' + editor_preview[closest_key]["SettingsEnabled"] + '"');
+    console.log('Generated preview:\nSettings Enabled: "' + SettingsEnabled + '"\nClosest Match: "' + editor_preview1[closest_key]["SettingsEnabled"] + '"');
 
     // Preview the images
     set_preview(closest_key);
 
-    if (editor_preview[closest_key]["Images"]["Image_2"] != SettingsEnabled) {
+    if (editor_preview1[closest_key]["Images"]["Image_2"] != SettingsEnabled) {
         // Warning 1: Preview image is not a perfect match [more info]
     }
-    // Warning 2: Preview [doesn't] use -2m4 -d3d10
 }
 
 function set_preview(key) {
-    var current_preview = "";
-    // Check if image is already loaded
-    if (current_preview == key) {
-        return;
-    }
-    current_preview = key;
-
     // Remove old preview images
     $(".slider_img").each(function () {
         $(this).remove();
@@ -172,25 +181,37 @@ function set_preview(key) {
     });
 
     // Set new preview images
-    var images = editor_preview[key]["Images"];
     var i = 0;
-    for (var key2 in images) {
+    if (key == "PreviewUnavailable") {
         i++;
-
-        // Set first image as active
-        var active = "";
-        if (i == 1) {
-            active = "active";
-        }
-
-        // Add image
-        var html = '<div id="img_slider-' + i + '" class="slider_img ' + active + '">';
-        html += '<img class="slider_img2" src="' + images[key2] + '"/></div>';
+        var html = '<div id="img_slider-1" class="slider_img active">';
+        html += '<img class="slider_img2" src="./images/PreviewUnavailable.png"/></div>';
         $(".img_slider").prepend(html);
+        var html2 = '<div class="img_slider-dot active"></div>';
+        $(".img_slider-dots").prepend(html2);
+    } else {
+        var images = editor_preview1[key]["Images"];
+        for (var key2 in images) {
+            i++;
+            // Set first image as active
+            var active = "";
+            if (i == 1) {
+                active = "active";
+            }
 
-        // Add dot
-        var html2 = '<div class="img_slider-dot ' + active + '" onclick="SlideImage_dot(event)" value="' + i + '"></div>'
-        $(".img_slider-dots").append(html2);
+           // Add image
+            var html = '<div id="img_slider-' + i + '" class="slider_img ' + active + '">';
+            html += '<img class="slider_img2" src="' + images[key2] + '"/></div>';
+            $(".img_slider").prepend(html);
+
+            // Add dot
+            if (images.length > 1) {
+                var html2 = '<div class="img_slider-dot ' + active + '" onclick="SlideImage_dot(event)" value="' + i + '"></div>'
+            } else {
+                var html2 = '<div class="img_slider-dot active"></div>'
+            }
+            $(".img_slider-dots").append(html2);
+        }
     }
 
     // Update Values
@@ -214,6 +235,9 @@ function ValueUpdate(type, id, value) {
 // On button click
 function button_settings(event) {
     $("#popup_settings").addClass("is-visible");
+
+    $("#editor_settings").val(JSON.stringify(editor_settings1, null, 2));
+    $("#editor_preview").val(JSON.stringify(editor_preview1, null, 2));
 }
 function button_createfile(event) {
     $("#popup_createfile").addClass("is-visible");
@@ -223,9 +247,38 @@ function closepopup(event) {
     if ($(event.target).is(".popup-close") || $(event.target).is(".popup")) {
         $(".popup").removeClass("is-visible");
     }
+    var data_id = $(event.target).attr("data-id");
+    if (data_id == "settings") {
+        try {
+            var data = $("#editor_preview").val();
+            editor_preview1 = JSON.parse(data);
+        } catch (e) {
+            console.log("Error parsing JSON for editor_preview1");
+            editor_preview1 = data
+        }
+        try {
+            data = $("#editor_settings").val();
+            editor_settings1 = JSON.parse(data);
+        } catch (e) {
+            console.log("Error parsing JSON for editor_settings1");
+            editor_settings1 = data
+        }
+        
+        // Rebuild Editor
+        $("#editor").html("");
+        $("#editor").append(build_editor());
+        // Rebuild Preview
+        generate_preview();
+
+        // log to console
+        console.log("Settings Updated");
+    }
 }
 
-function button_copy_ini(event) {
+function button_copy(event) {
+    // Get id
+    var id = $(event.target).attr("data-id");
+
     // Change text to Copied! for 2 seconds
     $(event.target).text("Copied!");
     setTimeout(function() {
@@ -233,7 +286,7 @@ function button_copy_ini(event) {
     }, 2000);
 
     // Copy to clipboard
-    var text = $("#consolevariables_ini").text();
+    var text = $("#" + id).text();
     var textarea = document.createElement('textarea');
     textarea.textContent = text;
     document.body.appendChild(textarea);
@@ -242,9 +295,13 @@ function button_copy_ini(event) {
     textarea.remove();
 
     // log to console
-    console.log("Copied consolevariable.ini to clipboard");
+    console.log("Copied " + id + " to clipboard");
 }
-function button_download_ini(event) {
+function button_download(event) {
+    // Get id
+    var id = $(event.target).attr("data-id");
+    var filename = $(event.target).attr("data-filename");
+
     // Change text to Downloaded! for 2 seconds
     $(event.target).text("Downloaded!");
     setTimeout(function() {
@@ -252,9 +309,7 @@ function button_download_ini(event) {
     }, 2000);
 
     // Downloads ini file
-    var text = $("#consolevariables_ini").text();
-    var filename = "ConsoleVariable.ini.txt";
-
+    var text = $("#" + id).text();
     var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
     let newLink = document.createElement("a");
     newLink.download = filename;
@@ -269,7 +324,24 @@ function button_download_ini(event) {
     newLink.click();
 
     // log to console
-    console.log("Downloaded consolevariable.ini");
+    console.log("Downloaded " + filename);
+}
+function button_reset(event) {
+    // Get id
+    var id = $(event.target).attr("data-id");
+
+    // Reset var and text to default
+    if (id == "editor_settings") {
+        editor_settings1 = editor_settings;
+        $("#editor_settings").val(JSON.stringify(editor_settings, null, 2));
+    }
+    if (id == "editor_preview") {
+        editor_preview1 = editor_preview;
+        $("#editor_preview").val(JSON.stringify(editor_preview, null, 2));
+    }
+
+    // log to console
+    console.log("Reset " + id);
 }
 
 // Toggle button
