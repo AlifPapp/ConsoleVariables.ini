@@ -74,6 +74,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Settings & Create File Button -->
                 <div class="col pt-3 pb-2 text-center">
                     <button class="custom-btn btn-16" style="margin-right: 200px;" onclick="button_settings(event)">Settings</button>
@@ -83,11 +84,13 @@
                             <h2>Settings</h2>
                             <h5 class="text-start" style="margin-left: 2.5%;">Generator</h5>
                             <textarea id="editor_settings"></textarea>
-                            <button class="custom-btn btn-16" onclick="button_reset(event)" data-id="editor_settings">Reset</button>
+                            <button class="custom-btn btn-16" onclick="button_copy(event)" data-id="editor_settings">Copy</button>
+                            <button class="custom-btn btn-16 btn-ms" onclick="button_reset(event)" data-id="editor_settings">Reset</button>
 
                             <h5 class="text-start" style="margin-top: 1em; margin-left: 2.5%;">Preview</h5>
                             <textarea id="editor_preview"></textarea>
-                            <button class="custom-btn btn-16" onclick="button_reset(event)" data-id="editor_preview">Reset</button>
+                            <button class="custom-btn btn-16" onclick="button_copy(event)" data-id="editor_preview">Copy</button>
+                            <button class="custom-btn btn-16 btn-ms" onclick="button_reset(event)" data-id="editor_preview">Reset</button>
                         </div>
                     </div>
 
@@ -98,7 +101,7 @@
                             <h2>ConsoleVariable.ini</h2>
                             <textarea id="consolevariables_ini" readonly="readonly"></textarea>
                             <button class="custom-btn btn-16" onclick="button_copy(event)" data-id="consolevariables_ini">Copy</button>
-                            <button class="custom-btn btn-16" onclick="button_download(event)" data-id="consolevariables_ini" data-filename="ConsoleVariable.ini.txt" style="margin-left: 15%;">Download</button>
+                            <button class="custom-btn btn-16 btn-ms" onclick="button_download(event)" data-id="consolevariables_ini" data-filename="ConsoleVariable.ini.txt">Download</button>
                         </div>
                     </div>
                 </div>

@@ -42,7 +42,6 @@ body {
 }
 
 /* CONTENT */
-
 .editor {
     position: relative;
     z-index: 10;
@@ -59,6 +58,10 @@ body {
 .custom-btn {
     border: 3px solid #131417;
     box-shadow: rgba(0, 0, 0, 1) 0px 5px 10px 0px;
+}
+
+.btn-ms {
+    margin-left: 15%;
 }
 
 /* Codeblock */

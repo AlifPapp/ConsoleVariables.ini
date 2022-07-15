@@ -286,7 +286,7 @@ function button_copy(event) {
     }, 2000);
 
     // Copy to clipboard
-    var text = $("#" + id).text();
+    var text = $("#" + id).val();
     var textarea = document.createElement('textarea');
     textarea.textContent = text;
     document.body.appendChild(textarea);
@@ -329,6 +329,12 @@ function button_download(event) {
 function button_reset(event) {
     // Get id
     var id = $(event.target).attr("data-id");
+
+    // Change text to Reseted! for 2 seconds
+    $(event.target).text("Reseted!");
+    setTimeout(function() {
+        $(event.target).text("Reset");
+    }, 2000);
 
     // Reset var and text to default
     if (id == "editor_settings") {
