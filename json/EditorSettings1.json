@@ -140,7 +140,7 @@
   },
   "Setting_6": {
     "Title": "Remove various visual effects",
-    "Description": "<b>Description:</b> Removes (plantZ, plantX, beer, clear water, etc.)<br><b>Warning:</b> Also removes Tek railgun, Tek helmet, Snow Owl and Bloodtslaker vision.",
+    "Description": "<b>Description:</b> Removes (plantZ, plantX, Beer, Unclear water, etc.)<br><b>Warning:</b> Also removes Tek railgun, Tek helmet, Snow Owl and Bloodtslaker vision.",
     "Default": "true",
     "Console_Variables": {
       "Variable_1": {
@@ -179,6 +179,45 @@
   "Setting_8": {
     "Title": "Fix black/noisy snow",
     "Description": "<b>Warning:</b> Lot of lighting and shadow effects will be added back, reducing the overall visibility and performance",
+    "Default": "true",
+    "Console_Variables": {
+      "Variable_1": {
+        "Name": "ShowFlag.LightComplexity",
+        "Id": "ShowFlag_LightComplexity",
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
+      },
+      "Variable_2": {
+        "Name": "ShowFlag.ShaderComplexity",
+        "Id": "ShowFlag_ShaderComplexity",
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
+      },
+      "Variable_3": {
+        "Name": "ShowFlag.LightShafts",
+        "Id": "ShowFlag_LightShafts",
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
+      },
+      "Variable_4": {
+        "Name": "ShowFlag.Refraction",
+        "Id": "ShowFlag_Refraction",
+        "Value": "0",
+        "Min": "0",
+        "Max": "1",
+        "DataStep": "1"
+      }
+    }
+  },
+  "Setting_9": {
+    "Title": "Remove a lot of effects",
+    "Description": "<b>Description:</b> Removes a lot of effects to increase fps",
     "Default": "true",
     "Console_Variables": {
       "Variable_1": {
