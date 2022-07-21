@@ -16,7 +16,6 @@
   </p>
 </div>
 
-Work in progress, nearly done
 
 ## To Do List:
 - [ ] Fix layout for different dimensions (mobile, portrait, landscape, etc)
