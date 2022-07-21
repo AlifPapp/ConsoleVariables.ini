@@ -12,6 +12,7 @@ textarea {
     font-family: consolas, monospace;
     background-color: #161B22;
     color: #F0F6FC;
+    height: 100%;
     width: 95%;
     margin: auto;
     padding-left: 1em;

@@ -51,33 +51,41 @@ function build_editor() {
     var html = '<div class="editor_table"><table><tbody>';
     for (var key in data) {
         html += "<!-- " + key + " -->";
-        html += '<tr><td class="collapsible-section-header"><a data-bs-toggle="collapse" href="#' + key + '">';
+        html += '<tr><td class="collapsible-section-header td-1"><a data-bs-toggle="collapse" href="#' + key + '">';
         html += data[key]["Title"];
-        html += '</a></td><td class="collapsible-section-header py-1">';
+        html += '</a></td><td class="collapsible-section-header py-1 td-1">';
         html += data[key]["Description"];
-        html += '</td><td class="collapsible-section-header">';
+        html += '</td><td class="collapsible-section-header td-1">';
         // Build switch
         html += build_switch(key, data[key]["Default"]);
         html += "</td></tr>";
 
         html += "<!-- Console_Variables -->";
-        html += '<tr><td class="p-0" colspan="3">';
+        html += '<tr><td class="p-0 td-1" colspan="3">';
         html += '<div id="' + key + '" class="collapse multi-collapse">';
         html += '<table style="width:100%">';
         for (var key2 in data[key]["Console_Variables"]) {
-            html += '<tr><td class="border-end-0" style="font-family: Andale Mono, monospace;">';
-            html += data[key]["Console_Variables"][key2]["Name"];
-            html += '</td><td class="py-1 border-start-0">';
-            // Build stepper
             data2 = data[key]["Console_Variables"][key2];
-            html += build_stepper(
-                data2["Id"],
-                data2["Value"],
-                data2["Min"],
-                data2["Max"],
-                data2["DataStep"]
-            );
-            html += "</td></tr>";
+            html += '<tr><td class="border-end-0 td-1" style="font-family: Andale Mono, monospace;">';
+            html += data2["Name"];
+            if (data2["Type"] == "none") {
+                html += '</td></tr>';
+            } else {
+                html += '</td><td class="py-1 border-start-0 td-1">';
+                if (data2["Type"] == "bool") {
+                    html += build_switch(data2["Id"], data2["Value"]);
+                }
+                else if (data2["Type"] == "int") {
+                    html += build_stepper(
+                        data2["Id"],
+                        data2["Value"],
+                        data2["Min"],
+                        data2["Max"],
+                        data2["DataStep"]
+                    );
+                }
+                html += "</td></tr>";
+            }
         }
         html += "</table></div></td></tr>";
     }
@@ -86,7 +94,7 @@ function build_editor() {
 }
 function build_switch(id, default_state) {
     var checked = "";
-    if (default_state == "true") {
+    if (default_state.toLowerCase() == "true") {
         checked = "checked";
     }
     var html = '<div class="ms-auto me-0" style="width: 80px;"><label class="switch">';
@@ -133,7 +141,7 @@ function build_consolevariable_ini() {
         }
     }
     console.log("Built consolevariable.ini");
-    $("#consolevariables_ini").text(consolevariable_ini);
+    $("#consolevariables_ini").val(consolevariable_ini);
     return;
 }
 
@@ -350,6 +358,60 @@ function button_reset(event) {
     console.log("Reset " + id);
 }
 
+function button_process(event) {
+    // Change text to Processed! for 2 seconds
+    $(event.target).text("Processed!");
+    setTimeout(function() {
+        $(event.target).text("Process");
+    }, 2000);
+
+    // Process ini string
+    var ini = $("#ini2json_1").val();
+    var json = {};
+    // split by newline
+    var lines = ini.split("\n");
+    // remove empty lines and comments
+    lines = lines.filter(function(line) {
+        return line.trim() != "" && line.trim().startsWith(";") == false;
+    }
+    );
+
+    for (var i = 0; i < lines.length; i++) {
+        json["Variable_" + i] = {}
+        // if line containts "="
+        if (lines[i].indexOf("=") > -1) {
+            var before = lines[i].substring(0, lines[i].indexOf("=")); 
+            var after = lines[i].substring(lines[i].indexOf("=") + 1);
+            json["Variable_" + i]["Name"] = before;
+            if (before.indexOf(".") > -1) {
+                before = before.replace(".", "_");
+            }
+            json["Variable_" + i]["Id"] = before;
+            
+            if (isNumber(after)) {
+                json["Variable_" + i]["Type"] = "int";
+                json["Variable_" + i]["Value"] = after;
+                json["Variable_" + i]["Min"] = "0";
+                json["Variable_" + i]["Max"] = "999";
+                if (after.indexOf(".") > -1) {
+                    json["Variable_" + i]["DataStep"] = 0.1;
+                } else {
+                    json["Variable_" + i]["DataStep"] = 1;
+                }
+            } else {
+                json["Variable_" + i]["Type"] = "bool";
+                json["Variable_" + i]["Value"] = after;
+            }
+        } else {
+            json["Variable_" + i]["Name"] = lines[i];
+            json["Variable_" + i]["Type"] = "none";
+        }
+    }
+    $("#ini2json_2").val(JSON.stringify(json, null, 2));
+    // log to console
+    console.log("Process ini2json");
+}
+
 // Toggle button
 function switch_ValueUpdate(event) {
     event.target.value = event.target.checked;
@@ -477,6 +539,8 @@ function LevenshteinDistance(a, b) {
     }
     return distance;
 }
+
+function isNumber(n) { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); } 
 
 // Preview image slider
 function SlideImage(event) {

@@ -65,11 +65,8 @@ body {
 }
 
 /* Codeblock */
-#editor_settings {
-    height: 30%;
-}
-#editor_preview {
-    height: 30%;
+.h-30 {
+    height: 30% !important;
 }
 #consolevariables_ini {
     height: 80%;

@@ -26,7 +26,7 @@ table {
     padding-left: 0.5em;
 }
 
-tbody td {
+tbody .td-1 {
     background-color: #ededed;
     border: 1px solid #d1d1d1;
     padding: 1.25rem;

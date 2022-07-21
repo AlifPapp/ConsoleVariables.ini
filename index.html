@@ -83,14 +83,30 @@
                             <a href="#0" class="popup-close" data-id="settings">Close</a>
                             <h2>Settings</h2>
                             <h5 class="text-start" style="margin-left: 2.5%;">Generator</h5>
-                            <textarea id="editor_settings"></textarea>
+                            <textarea class="h-30" id="editor_settings"></textarea>
                             <button class="custom-btn btn-16" onclick="button_copy(event)" data-id="editor_settings">Copy</button>
                             <button class="custom-btn btn-16 btn-ms" onclick="button_reset(event)" data-id="editor_settings">Reset</button>
 
                             <h5 class="text-start" style="margin-top: 1em; margin-left: 2.5%;">Preview</h5>
-                            <textarea id="editor_preview"></textarea>
+                            <textarea class="h-30" id="editor_preview"></textarea>
                             <button class="custom-btn btn-16" onclick="button_copy(event)" data-id="editor_preview">Copy</button>
                             <button class="custom-btn btn-16 btn-ms" onclick="button_reset(event)" data-id="editor_preview">Reset</button>
+
+                            <h5 class="text-start" style="margin-top: 1em; margin-left: 2.5%;">.ini to .json</h5>
+                            <table class="h-30">
+                                <tr class="h-30">
+                                    <td>
+                                        <textarea id="ini2json_1"></textarea>
+                                    </td>
+                                    <td>
+                                        <h2>--></h2>
+                                    </td>
+                                    <td>
+                                        <textarea id="ini2json_2"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="custom-btn btn-16" onclick="button_process(event)" data-id="ini2json">Process</button>
                         </div>
                     </div>
 
