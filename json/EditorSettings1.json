@@ -1078,142 +1078,96 @@
         "Value": "True"
       },
       "Variable_95": {
-        "Name": "TEXTUREGROUP_Character",
-        "Id": "TEXTUREGROUP_Character",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=4,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Character=(MinLODSize=1,MaxLODSize=4,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_96": {
-        "Name": "TEXTUREGROUP_CharacterNormalMap",
-        "Id": "TEXTUREGROUP_CharacterNormalMap",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=4,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_CharacterNormalMap=(MinLODSize=1,MaxLODSize=4,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_97": {
-        "Name": "TEXTUREGROUP_CharacterSpecular",
-        "Id": "TEXTUREGROUP_CharacterSpecular",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=4,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_CharacterSpecular=(MinLODSize=1,MaxLODSize=4,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_98": {
-        "Name": "TEXTUREGROUP_Cinematic",
-        "Id": "TEXTUREGROUP_Cinematic",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=128,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Cinematic=(MinLODSize=1,MaxLODSize=128,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_99": {
-        "Name": "TEXTUREGROUP_Effects",
-        "Id": "TEXTUREGROUP_Effects",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=128,LODBias=0,MinMagFilter=linear,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Effects=(MinLODSize=1,MaxLODSize=128,LODBias=0,MinMagFilter=linear,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_100": {
-        "Name": "TEXTUREGROUP_EffectsNotFiltered",
-        "Id": "TEXTUREGROUP_EffectsNotFiltered",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=128,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_EffectsNotFiltered=(MinLODSize=1,MaxLODSize=128,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_101": {
-        "Name": "TEXTUREGROUP_Lightmap",
-        "Id": "TEXTUREGROUP_Lightmap",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=8,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Lightmap=(MinLODSize=1,MaxLODSize=8,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_102": {
-        "Name": "TEXTUREGROUP_MobileFlattened",
-        "Id": "TEXTUREGROUP_MobileFlattened",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_MobileFlattened=(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_103": {
-        "Name": "TEXTUREGROUP_RenderTarget",
-        "Id": "TEXTUREGROUP_RenderTarget",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=128,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_RenderTarget=(MinLODSize=1,MaxLODSize=128,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_104": {
-        "Name": "TEXTUREGROUP_Shadowmap",
-        "Id": "TEXTUREGROUP_Shadowmap",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point,NumStreamedMips=3)"
+        "Name": "TEXTUREGROUP_Shadowmap=(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point,NumStreamedMips=3)",
+        "Type": "none"
       },
       "Variable_105": {
-        "Name": "TEXTUREGROUP_Skybox",
-        "Id": "TEXTUREGROUP_Skybox",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Skybox=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_106": {
-        "Name": "TEXTUREGROUP_Terrain_Heightmap",
-        "Id": "TEXTUREGROUP_Terrain_Heightmap",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Terrain_Heightmap=(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_107": {
-        "Name": "TEXTUREGROUP_Terrain_Weightmap",
-        "Id": "TEXTUREGROUP_Terrain_Weightmap",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Terrain_Weightmap=(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_108": {
-        "Name": "TEXTUREGROUP_UI",
-        "Id": "TEXTUREGROUP_UI",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_UI=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_109": {
-        "Name": "TEXTUREGROUP_Vehicle",
-        "Id": "TEXTUREGROUP_Vehicle",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Vehicle=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_110": {
-        "Name": "TEXTUREGROUP_VehicleNormalMap",
-        "Id": "TEXTUREGROUP_VehicleNormalMap",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_VehicleNormalMap=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_111": {
-        "Name": "TEXTUREGROUP_VehicleSpecular",
-        "Id": "TEXTUREGROUP_VehicleSpecular",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_VehicleSpecular=(MinLODSize=1,MaxLODSize=256,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_112": {
-        "Name": "TEXTUREGROUP_Weapon",
-        "Id": "TEXTUREGROUP_Weapon",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=64,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_Weapon=(MinLODSize=1,MaxLODSize=64,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_113": {
-        "Name": "TEXTUREGROUP_WeaponNormalMap",
-        "Id": "TEXTUREGROUP_WeaponNormalMap",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=64,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_WeaponNormalMap=(MinLODSize=1,MaxLODSize=64,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_114": {
-        "Name": "TEXTUREGROUP_WeaponSpecular",
-        "Id": "TEXTUREGROUP_WeaponSpecular",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=64,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_WeaponSpecular=(MinLODSize=1,MaxLODSize=64,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_115": {
-        "Name": "TEXTUREGROUP_World",
-        "Id": "TEXTUREGROUP_World",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_World=(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_116": {
-        "Name": "TEXTUREGROUP_WorldNormalMap",
-        "Id": "TEXTUREGROUP_WorldNormalMap",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_WorldNormalMap=(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_117": {
-        "Name": "TEXTUREGROUP_WorldSpecular",
-        "Id": "TEXTUREGROUP_WorldSpecular",
-        "Type": "bool",
-        "Value": "(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)"
+        "Name": "TEXTUREGROUP_WorldSpecular=(MinLODSize=1,MaxLODSize=2,LODBias=0,MinMagFilter=aniso,MipFilter=point)",
+        "Type": "none"
       },
       "Variable_118": {
         "Name": "r.AOTrimOldRecordsFraction",

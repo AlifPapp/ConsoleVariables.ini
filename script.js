@@ -131,12 +131,16 @@ function build_consolevariable_ini() {
     for (var key in data) {
         // if setting is enabled
         if ($("#" + key).val() == "true") {
-            // Add name
+            // Add header
             consolevariable_ini += "\n;[" + data[key]["Title"] + "]\n";
             // for each console variable
             for (var key2 in data[key]["Console_Variables"]) {
                 // get value
-                consolevariable_ini += data[key]["Console_Variables"][key2]["Name"] + "=" + $("#" + data[key]["Console_Variables"][key2]["Id"]).val() + "\n";
+                if (data[key]["Console_Variables"][key2]["Type"] != "none") {
+                    consolevariable_ini += data[key]["Console_Variables"][key2]["Name"] + "=" + $("#" + data[key]["Console_Variables"][key2]["Id"]).val() + "\n";
+                } else {
+                    consolevariable_ini += data[key]["Console_Variables"][key2]["Name"] + "\n";
+                }
             }
         }
     }
@@ -213,11 +217,7 @@ function set_preview(key) {
             $(".img_slider").prepend(html);
 
             // Add dot
-            if (images.length > 1) {
-                var html2 = '<div class="img_slider-dot ' + active + '" onclick="SlideImage_dot(event)" value="' + i + '"></div>'
-            } else {
-                var html2 = '<div class="img_slider-dot active"></div>'
-            }
+            var html2 = '<div class="img_slider-dot ' + active + '" onclick="SlideImage_dot(event)" value="' + i + '"></div>'
             $(".img_slider-dots").append(html2);
         }
     }
@@ -243,9 +243,17 @@ function ValueUpdate(type, id, value) {
 // On button click
 function button_settings(event) {
     $("#popup_settings").addClass("is-visible");
+    if (editor_settings1.constructor !== Object) {
+        $("#editor_settings").val(editor_settings1);
+    } else { 
+        $("#editor_settings").val(JSON.stringify(editor_settings1, null, 2));
+    }
 
-    $("#editor_settings").val(JSON.stringify(editor_settings1, null, 2));
-    $("#editor_preview").val(JSON.stringify(editor_preview1, null, 2));
+    if (editor_preview1.constructor !== Object) {
+        $("#editor_preview").val(editor_preview1);
+    } else {
+        $("#editor_preview").val(JSON.stringify(editor_preview1, null, 2));
+    }
 }
 function button_createfile(event) {
     $("#popup_createfile").addClass("is-visible");
@@ -357,7 +365,6 @@ function button_reset(event) {
     // log to console
     console.log("Reset " + id);
 }
-
 function button_process(event) {
     // Change text to Processed! for 2 seconds
     $(event.target).text("Processed!");
@@ -378,8 +385,11 @@ function button_process(event) {
 
     for (var i = 0; i < lines.length; i++) {
         json["Variable_" + i] = {}
-        // if line containts "="
-        if (lines[i].indexOf("=") > -1) {
+        // if line containts starts with TEXTUREGROUP
+        if (lines[i].toLowerCase().startsWith("texturegroup")) {
+            json["Variable_" + i]["Name"] = lines[i];
+            json["Variable_" + i]["Type"] = "none";
+        } else {
             var before = lines[i].substring(0, lines[i].indexOf("=")); 
             var after = lines[i].substring(lines[i].indexOf("=") + 1);
             json["Variable_" + i]["Name"] = before;
@@ -402,9 +412,6 @@ function button_process(event) {
                 json["Variable_" + i]["Type"] = "bool";
                 json["Variable_" + i]["Value"] = after;
             }
-        } else {
-            json["Variable_" + i]["Name"] = lines[i];
-            json["Variable_" + i]["Type"] = "none";
         }
     }
     $("#ini2json_2").val(JSON.stringify(json, null, 2));
