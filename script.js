@@ -51,7 +51,7 @@ function build_editor() {
     var html = '<div class="editor_table"><table><tbody>';
     for (var key in data) {
         html += "<!-- " + key + " -->";
-        html += '<tr><td class="collapsible-section-header td-1"><a data-bs-toggle="collapse" href="#' + key + '">';
+        html += '<tr><td class="collapsible-section-header td-1"><a data-bs-toggle="collapse" class="collapsed" href="#' + key + '">';
         html += data[key]["Title"];
         html += '</a></td><td class="collapsible-section-header py-1 td-1">';
         html += data[key]["Description"];

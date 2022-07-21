@@ -11,6 +11,7 @@ table {
 }
 
 .collapsible-section-header a {
+    content: "\25ba";
     color: #363636;
     font-weight: 700;
     text-decoration: none;
