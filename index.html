@@ -62,7 +62,7 @@
             <div class="row py-4">
                 <!-- Preview Image  -->
                 <div class="text-center">
-                    <div class="img_slider" id="preview_image" value="1" max="4">
+                    <div class="img_slider" value="1" max="4">
                         <div id="img_slider-1" class="slider_img active">
                             <img class="slider_img2" src="./images/PreviewUnavailable.png"/>
                         </div>
@@ -85,12 +85,12 @@
                             <h5 class="text-start" style="margin-left: 2.5%;">Generator</h5>
                             <textarea class="h-30" id="editor_settings"></textarea>
                             <button class="custom-btn btn-16" onclick="button_copy(event)" data-id="editor_settings">Copy</button>
-                            <button class="custom-btn btn-16 btn-ms" onclick="button_reset(event)" data-id="editor_settings">Reset</button>
+                            <button class="custom-btn btn-16 ms-15" onclick="button_reset(event)" data-id="editor_settings">Reset</button>
 
                             <h5 class="text-start" style="margin-top: 1em; margin-left: 2.5%;">Preview</h5>
                             <textarea class="h-30" id="editor_preview"></textarea>
                             <button class="custom-btn btn-16" onclick="button_copy(event)" data-id="editor_preview">Copy</button>
-                            <button class="custom-btn btn-16 btn-ms" onclick="button_reset(event)" data-id="editor_preview">Reset</button>
+                            <button class="custom-btn btn-16 ms-15" onclick="button_reset(event)" data-id="editor_preview">Reset</button>
 
                             <h5 class="text-start" style="margin-top: 1em; margin-left: 2.5%;">.ini to .json</h5>
                             <table class="h-30">
@@ -106,7 +106,9 @@
                                     </td>
                                 </tr>
                             </table>
-                            <button class="custom-btn btn-16" onclick="button_process(event)" data-id="ini2json">Process</button>
+                            <button class="custom-btn btn-16 me-10" onclick="button_copy(event)" data-id="ini2json_1">Copy</button>
+                            <button class="custom-btn btn-16" onclick="button_process(event)">Process</button>
+                            <button class="custom-btn btn-16 ms-10" onclick="button_copy(event)" data-id="ini2json_2">Copy</button>
                         </div>
                     </div>
 
@@ -115,9 +117,9 @@
                         <div class="popup-container">
                             <a href="#0" class="popup-close" data-id="create_file">Close</a>
                             <h2>ConsoleVariable.ini</h2>
-                            <textarea id="consolevariables_ini" readonly="readonly"></textarea>
+                            <textarea class="h-80" id="consolevariables_ini" readonly="readonly"></textarea>
                             <button class="custom-btn btn-16" onclick="button_copy(event)" data-id="consolevariables_ini">Copy</button>
-                            <button class="custom-btn btn-16 btn-ms" onclick="button_download(event)" data-id="consolevariables_ini" data-filename="ConsoleVariable.ini.txt">Download</button>
+                            <button class="custom-btn btn-16 ms-15" onclick="button_download(event)" data-id="consolevariables_ini" data-filename="ConsoleVariable.ini.txt">Download</button>
                         </div>
                     </div>
                 </div>

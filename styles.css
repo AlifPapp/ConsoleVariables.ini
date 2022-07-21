@@ -53,23 +53,25 @@ body {
     box-shadow: rgba(0, 0, 0, 0.3) 0 0 5px 0;
 }
 
-#preview_image,
-.editor_table,
-.custom-btn {
+#editor_table {
     border: 3px solid #131417;
     box-shadow: rgba(0, 0, 0, 1) 0px 5px 10px 0px;
 }
 
-.btn-ms {
-    margin-left: 15%;
+.me-10 {
+    margin-right: 10%!important;
 }
-
-/* Codeblock */
+.ms-10 {
+    margin-left: 10%!important;
+}
+.ms-15 {
+    margin-left: 15%!important;
+}
 .h-30 {
     height: 30% !important;
 }
-#consolevariables_ini {
-    height: 80%;
+.h-80 {
+    height: 80% !important;
 }
 
 /* FOOTER */

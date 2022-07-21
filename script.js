@@ -48,7 +48,7 @@ ready(start);
 function build_editor() {
     var data = editor_settings1;
     var data2;
-    var html = '<div class="editor_table"><table><tbody>';
+    var html = '<div id="editor_table"><table><tbody>';
     for (var key in data) {
         html += "<!-- " + key + " -->";
         html += '<tr><td class="collapsible-section-header td-1"><a data-bs-toggle="collapse" class="collapsed" href="#' + key + '">';
