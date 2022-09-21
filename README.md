@@ -1,7 +1,7 @@
 <div>
   <p align="center">
-    <a href="https://AlifPapp.github.io/Ark-ConsoleVariables.ini-Generator/">
-    <img src="https://AlifPapp.github.io/Ark-ConsoleVariables.ini-Generator/images/eye_open_close.gif" align="center" alt="AutoSend.png"></a>
+    <a href="https://AlifPapp.github.io/ConsoleVariables.ini-Generator/">
+    <img src="https://AlifPapp.github.io/ConsoleVariables.ini-Generator/images/eye_open_close.gif" align="center" alt="AutoSend.png"></a>
   </p>
   <p align="center">
     <a href="https://www.youtube.com/channel/UCsIaU94p647veKr7sy12wmA">
