@@ -1,4 +1,4 @@
-var site_url = window.location.origin;
+var site_url = window.location.origin + "/ConsoleVariables.ini/";
 
 var editor_settings = {};
 var editor_preview = {};
