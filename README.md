@@ -16,8 +16,6 @@
   </p>
 </div>
 
-
 ## To Do List:
 - [ ] Fix layout for different dimensions (mobile, portrait, landscape, etc)
 - [ ] Find optimal EditorSettings configuration
-- [ ] Make script to automated gathering screenshots
