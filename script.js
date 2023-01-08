@@ -1,4 +1,4 @@
-var site_url = "https://zseni051.github.io/Ark-ConsoleVariables.ini-Generator/";
+var site_url = window.location.origin;
 
 var editor_settings = {};
 var editor_preview = {};
