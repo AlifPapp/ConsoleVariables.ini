@@ -117,7 +117,7 @@ function build_stepper(id, default_value, min, max, datastep) {
 
 // Build consolevariable.ini string
 function build_consolevariable_ini() { 
-    var consolevariable_ini = ";Created with:\n;" + site_url + "\n";
+    var consolevariable_ini = ";Created with:\n;" + site_url + "\n[Startup]\n";
 
     // Check editor_settings1
     if (editor_settings1.constructor !== Object){
